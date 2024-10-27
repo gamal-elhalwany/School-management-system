@@ -14,7 +14,7 @@
                                 <div class="clearfix"></div>
                             </a>
                             <ul id="dashboard" class="collapse" data-parent="#sidebarnav">
-                                <li> <a href="{{route('stages.stages')}}">Dashboard_1</a> </li>
+                                <li> <a href="{{route('stages.index')}}">Dashboard_1</a> </li>
                             </ul>
                         </li>
                         <!-- menu title -->

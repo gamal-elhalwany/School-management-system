@@ -17,8 +17,7 @@
     "ًWe Accept:": ":نحن نقبل",
     "Privacy Policy": "سياسة الخصوصية",
     "Terms Of Use": "شروط الاستخدام",
-    "Copyright": "جميع الحقوق محفوظة",
-    "Copyright © 2020": "جميع الحقوق محفوظة",
+    "Copyright": "حقوق الطبع والنشر",
     "Get In Touch With Us": "تواصل معنا",
     "Information": "معلومات",
     "Name": "الأسم",
@@ -177,11 +176,16 @@
     "Already registered?": "هل قمت فعلا بالتسجيل؟",
     "Educational Stages": "المراحل التعليمية",
     "Primary Stage": "المرحلة الأبتدائية",
+    "Preparatory Stage": "المرحلة الأعدادية",
     "Secondary Stage": "المرحلة الثانوية",
     "Higher Stage": "المرحلة العليا",
     "University Stage": "المرحلة الجامعية",
-    "Add New Educational Stage": "أضافة مرحلة جديدة",
+    "Add New Educational Stage": "أضافة مرحلة  تعليمية جديدة",
+    "Add Stage": "أضف مرحلة",
     "\\": "/",
     "Notes": "ملاحظات",
-    "Actions": "أفعال"
+    "Actions": "أفعال",
+    "Name in English": "الأسم بالأنجليزية",
+    "Name in Arabic": "الأسم بالعربية",
+    "Enter Data": "أدخل البيانات"
 }

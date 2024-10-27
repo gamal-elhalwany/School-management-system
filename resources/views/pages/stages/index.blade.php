@@ -27,9 +27,28 @@
 <!-- row -->
 <div class="row">
     <div class="col-md-12 mb-30">
+        @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{ session('success') }}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+        @error('name_en')
+        <p class="text-danger">{{ $message }}</p>
+        @enderror
+        @error('name_ar')
+        <p class="text-danger">{{ $message }}</p>
+        @enderror
+        @error('notes')
+        <p class="text-danger">{{ $message }}</p>
+        @enderror
+
         <div class="card card-statistics h-100">
             <div class="card-body">
-                <div class="table-responsive">
+                <button type="button mb-3" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">{{__('Add Stage')}}</button>
+                <div class="table-responsive mt-3">
                     <table id="datatable" class="table table-striped table-bordered p-0">
                         <thead>
                             <tr>
@@ -42,17 +61,64 @@
                         <tbody>
                             @foreach($stages as $stage)
                             <tr>
-                                <td>{{$loop->iterator}}</td>
+                                <td>{{$loop->iteration}}</td>
                                 <td>{{$stage->name}}</td>
                                 <td>{{$stage->notes}}</td>
                                 <td>
-
+                                    <form action="{{route('stages.destroy', $stage->id)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-outline-danger btn-sm">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
+
+                <!-- Start Stages Form Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <form action="{{route('stages.store')}}" method="POST">
+                                    @csrf
+                                    <div class="mb-3">
+                                        <label for="name">Name</label>
+                                        <input type="text" name="name_en" class="form-control" id="name"
+                                            placeholder="{{__('Name in English')}}">
+                                        @error('name_en')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="name">{{__('Name')}}</label>
+                                        <input type="text" name="name_ar" class="form-control" id="name"
+                                            placeholder="{{__('Name in Arabic')}}">
+                                        @error('name_ar')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="notes">{{__('Notes')}}</label>
+                                        <textarea name="notes" class="form-control" id="notes"
+                                            placeholder="{{__('Notes')}}"></textarea>
+                                        @error('notes')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">{{__('Enter Data')}}</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Start Stages Form Modal -->
             </div>
         </div>
     </div>

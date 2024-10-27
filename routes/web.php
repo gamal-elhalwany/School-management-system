@@ -27,7 +27,9 @@ Route::middleware('auth', 'localeSessionRedirect', 'localizationRedirect', 'loca
         return view('empty');
     });
 
-    Route::get('/stages', [StageController::class, 'index'])->name('stages.stages');
+    Route::get('/stages', [StageController::class, 'index'])->name('stages.index');
+    Route::post('/stages', [StageController::class, 'store'])->name('stages.store');
+    Route::delete('/stages/{stage}', [StageController::class, 'destroy'])->name('stages.destroy');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

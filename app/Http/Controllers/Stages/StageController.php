@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Stages;
 use App\Models\Stage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreStageRequest;
 
 class StageController extends Controller
 {
@@ -31,9 +32,16 @@ class StageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreStageRequest $request)
     {
-        //
+        $stage = Stage::create([
+            'name' => [
+                'en' => $request->post('name_en'),
+                'ar' => $request->post('name_ar'),
+            ],
+        ]);
+        toastr()->success(trans('messages.success'));
+        return redirect()->route('stages.index');
     }
 
     /**
@@ -65,6 +73,11 @@ class StageController extends Controller
      */
     public function destroy(Stage $stage)
     {
-        //
+        $user= auth()->user();
+        if ($user) {
+            $stage->delete();
+        }
+        toastr()->success(trans('messages.delete'));
+        return redirect()->route('stages.index');
     }
 }
