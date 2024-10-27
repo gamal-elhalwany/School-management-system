@@ -19768,14 +19768,14 @@ ol.ui.list ol li,
   top: 0; }
 
 html {
-  font-size: 14px; }
+  font-size: 16px; }
 
 body {
-  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
   font-size: 0.95rem;
-  color: #626262; }
+  color: #626262;
+}
 
 h1, h2, h3, h4, h5, h6, p, span, ul, li, a, ol {
   padding: 0;
@@ -21112,7 +21112,7 @@ ul.list-unstyled li {
   -ms-transition: all 0.9s ease;
   -o-transition: all 0.9s ease;
   transition: all 0.9s ease;
-  width: 100%; }
+}
   .content-wrapper .page-title {
     padding: 0px; }
   .content-wrapper .breadcrumb {

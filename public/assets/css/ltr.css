@@ -14981,7 +14981,7 @@ button.toast-close-button {
 
 /*# sourceMappingURL=bootstrap-datepicker.css.map */
 /*
-    Common 
+    Common
 */
 .wizard,
 .tabcontrol {
@@ -20230,7 +20230,7 @@ ul.list-unstyled li {
   -ms-transition: all 0.9s ease;
   -o-transition: all 0.9s ease;
   transition: all 0.9s ease;
-  width: 100%; }
+}
   .content-wrapper .page-title {
     padding: 0px; }
   .content-wrapper .breadcrumb {

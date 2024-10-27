@@ -46,12 +46,9 @@
 
             @include('layouts.footer')
         </div><!-- main content wrapper end-->
-    </div>
-    </div>
-    </div>
 
-    <!--=================================
- footer -->
+    <!--=================================footer -->
+    </div><!-- wrapper end -->
 
     @include('layouts.footer-scripts')
 
