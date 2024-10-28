@@ -34,14 +34,19 @@ class StageController extends Controller
      */
     public function store(StoreStageRequest $request)
     {
-        $stage = Stage::create([
-            'name' => [
-                'en' => $request->post('name_en'),
-                'ar' => $request->post('name_ar'),
-            ],
-        ]);
-        toastr()->success(trans('messages.success'));
-        return redirect()->route('stages.index');
+        $user = auth()->user();
+        if ($user)
+        {
+            $stage = Stage::create([
+                'name' => [
+                    'en' => $request->post('name_en'),
+                    'ar' => $request->post('name_ar'),
+                ],
+            ]);
+            toastr()->success(trans('messages.success'));
+            return redirect()->route('stages.index');
+        }
+        return redirect()->route('login');
     }
 
     /**
@@ -63,21 +68,29 @@ class StageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Stage $stage)
+    public function update(StoreStageRequest $request, Stage $stage)
     {
-        //
+        $user = auth()->user();
+        if ($user)
+        {
+            $stage->update($request->all());
+            toastr()->success(trans('messages.success'));
+            return redirect()->route('stages.index');
+        }
+        return redirect()->route('login');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Stage $stage)
+    public function destroy(Request $request, Stage $stage)
     {
         $user= auth()->user();
         if ($user) {
             $stage->delete();
+            toastr()->info(trans('messages.delete'));
+            return redirect()->route('stages.index');
         }
-        toastr()->success(trans('messages.delete'));
-        return redirect()->route('stages.index');
+        return redirect()->route('login');
     }
 }

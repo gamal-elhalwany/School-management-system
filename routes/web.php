@@ -29,6 +29,7 @@ Route::middleware('auth', 'localeSessionRedirect', 'localizationRedirect', 'loca
 
     Route::get('/stages', [StageController::class, 'index'])->name('stages.index');
     Route::post('/stages', [StageController::class, 'store'])->name('stages.store');
+    Route::patch('/stages/{stage}', [StageController::class, 'update'])->name('stages.update');
     Route::delete('/stages/{stage}', [StageController::class, 'destroy'])->name('stages.destroy');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
