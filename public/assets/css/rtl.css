@@ -19768,14 +19768,15 @@ ol.ui.list ol li,
   top: 0; }
 
 html {
-  font-size: 14px; }
+  font-size: 16px; }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Noto Kufi Arabic', sans-serif;
   margin: 0;
   padding: 0;
   font-size: 0.95rem;
-  color: #626262; }
+  color: #626262;
+}
 
 h1, h2, h3, h4, h5, h6, p, span, ul, li, a, ol {
   padding: 0;
@@ -20321,7 +20322,10 @@ ul.list-unstyled li {
     -ms-transition: all 0.15s ease;
     -o-transition: all 0.15s ease;
     transition: all 0.15s ease;
-    width: 5px; }
+    width: 5px;
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}
   .nice-select:hover {
     border-color: #eeeeee; }
   .nice-select:focus {
@@ -20334,14 +20338,20 @@ ul.list-unstyled li {
   .nice-select.open:after {
     -webkit-transform: rotate(-135deg);
     -ms-transform: rotate(-135deg);
-    transform: rotate(-135deg); }
+    transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+}
 
 .nice-select.open .list {
   opacity: 1;
   pointer-events: auto;
   -webkit-transform: scale(1) translateY(0);
   -ms-transform: scale(1) translateY(0);
-  transform: scale(1) translateY(0); }
+  transform: scale(1) translateY(0);
+  -moz-transform: scale(1) translateY(0);
+  -o-transform: scale(1) translateY(0);
+}
 
 .nice-select.disabled {
   border-color: #eeeeee;
@@ -20398,7 +20408,13 @@ ul.list-unstyled li {
   transform: scale(0.75) translateY(-21px);
   -webkit-transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
   transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
-  z-index: 9; }
+  z-index: 9;
+  -moz-transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+  -ms-transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+  -o-transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+  -moz-transform: scale(0.75) translateY(-21px);
+  -o-transform: scale(0.75) translateY(-21px);
+}
 
 .nice-select .list:hover .option:not(:hover) {
   background-color: transparent !important; }
@@ -21112,7 +21128,7 @@ ul.list-unstyled li {
   -ms-transition: all 0.9s ease;
   -o-transition: all 0.9s ease;
   transition: all 0.9s ease;
-  width: 100%; }
+}
   .content-wrapper .page-title {
     padding: 0px; }
   .content-wrapper .breadcrumb {

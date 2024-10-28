@@ -1,5 +1,4 @@
-        <!--=================================
- header start-->
+        <!--=================================header start-->
         <nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <!-- logo -->
             <div class="text-left navbar-brand-wrapper">
@@ -27,15 +26,21 @@
             <!-- top bar right -->
             <ul class="nav navbar-nav ml-auto">
 
-                <ul>
-                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                    <li>
-                        <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                            {{ $properties['native'] }}
-                        </a>
-                    </li>
-                    @endforeach
-                </ul>
+                <!-- Example single danger button -->
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{__('Choose Language')}}
+                    </button>
+                    <ul class="dropdown-menu pb-3">
+                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <li class="mt-2">
+                            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                {{ $properties['native'] }}
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
 
                 <li class="nav-item fullscreen">
                     <a id="btnFullscreen" href="#" class="nav-link"><i class="ti-fullscreen"></i></a>
@@ -118,5 +123,4 @@
             </ul>
         </nav>
 
-        <!--=================================
- header End-->
+        <!--=================================header End-->
