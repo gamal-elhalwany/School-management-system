@@ -2,7 +2,8 @@
         <nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <!-- logo -->
             <div class="text-left navbar-brand-wrapper">
-                <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo-dark.png" alt=""></a>
+                <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('assets/images/logo-dark.png') }}"
+                        alt=""></a>
                 <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-icon-dark.png"
                         alt=""></a>
             </div>
@@ -18,7 +19,8 @@
                         <div class="search-box not-click">
                             <input type="text" class="not-click form-control" placeholder="Search" value=""
                                 name="search">
-                            <button class="search-button" type="submit"> <i class="fa fa-search not-click"></i></button>
+                            <button class="search-button" type="submit"> <i
+                                    class="fa fa-search not-click"></i></button>
                         </div>
                     </div>
                 </li>
@@ -28,16 +30,18 @@
 
                 <!-- Example single danger button -->
                 <div class="btn-group">
-                    <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{__('Choose Language')}}
+                    <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        {{ __('Choose Language') }}
                     </button>
                     <ul class="dropdown-menu pb-3">
-                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                        <li class="mt-2">
-                            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                {{ $properties['native'] }}
-                            </a>
-                        </li>
+                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <li class="mt-2">
+                                <a rel="alternate" hreflang="{{ $localeCode }}"
+                                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                    {{ $properties['native'] }}
+                                </a>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
@@ -46,8 +50,8 @@
                     <a id="btnFullscreen" href="#" class="nav-link"><i class="ti-fullscreen"></i></a>
                 </li>
                 <li class="nav-item dropdown ">
-                    <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                        aria-expanded="false">
+                    <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button"
+                        aria-haspopup="true" aria-expanded="false">
                         <i class="ti-bell"></i>
                         <span class="badge badge-danger notification-status"> </span>
                     </a>
@@ -63,15 +67,17 @@
                                 class="float-right text-muted time">22 mins</small> </a>
                         <a href="#" class="dropdown-item">Server error report<small
                                 class="float-right text-muted time">7 hrs</small> </a>
-                        <a href="#" class="dropdown-item">Database report<small class="float-right text-muted time">1
+                        <a href="#" class="dropdown-item">Database report<small
+                                class="float-right text-muted time">1
                                 days</small> </a>
-                        <a href="#" class="dropdown-item">Order confirmation<small class="float-right text-muted time">2
+                        <a href="#" class="dropdown-item">Order confirmation<small
+                                class="float-right text-muted time">2
                                 days</small> </a>
                     </div>
                 </li>
                 <li class="nav-item dropdown ">
-                    <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                        aria-expanded="true"> <i class=" ti-view-grid"></i> </a>
+                    <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button"
+                        aria-haspopup="true" aria-expanded="true"> <i class=" ti-view-grid"></i> </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-big">
                         <div class="dropdown-header">
                             <strong>Quick Links</strong>
@@ -104,8 +110,8 @@
                         <div class="dropdown-header">
                             <div class="media">
                                 <div class="media-body">
-                                    <h5 class="mt-0 mb-0">Michael Bean</h5>
-                                    <span>michael-bean@mail.com</span>
+                                    <h5 class="mt-0 mb-0">{{ Auth::user()->name }}</h5>
+                                    <span>{{ Auth::user()->email }}</span>
                                 </div>
                             </div>
                         </div>
@@ -117,7 +123,16 @@
                                 class="badge badge-info">6</span> </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
-                        <a class="dropdown-item" href="#"><i class="text-danger ti-unlock"></i>Logout</a>
+                        {{-- <a class="dropdown-item" href="{{route('logout')}}"><i class="text-danger ti-unlock"></i>Logout</a> --}}
+
+                        <a class="dropdown-item" href="/logout"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="text-danger ti-unlock"></i> Logout
+                        </a>
+                        <!-- Hidden logout form -->
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </div>
                 </li>
             </ul>

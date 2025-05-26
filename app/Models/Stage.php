@@ -13,5 +13,10 @@ class Stage extends Model
         'name',
         'notes',
     ];
-    public $translatable = ['name'];
+    public $translatable = ['name', 'notes'];
+
+    public function classroom ()
+    {
+        return $this->hasMany(Classroom::class);
+    }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Stages\StageController;
+use App\Http\Controllers\Classrooms\ClassroomController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -21,7 +22,7 @@ Route::get('/', function () {
 })->middleware('guest');
 
 
-Route::middleware('auth', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath')->prefix(LaravelLocalization::setLocale())->group(function () {
+Route::middleware(['auth', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])->prefix(LaravelLocalization::setLocale())->group(function () {
 
     Route::get('/empty', function () {
         return view('empty');
@@ -31,6 +32,9 @@ Route::middleware('auth', 'localeSessionRedirect', 'localizationRedirect', 'loca
     Route::post('/stages', [StageController::class, 'store'])->name('stages.store');
     Route::patch('/stages/{stage}', [StageController::class, 'update'])->name('stages.update');
     Route::delete('/stages/{stage}', [StageController::class, 'destroy'])->name('stages.destroy');
+
+    // Classrooms Routes.
+    Route::resource('classrooms', ClassroomController::class);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
