@@ -24,7 +24,8 @@ class StoreStageRequest extends FormRequest
         return [
             'name_en' => 'required|unique:stages,name',
             'name_ar' => 'required|unique:stages,name',
-            'notes' => 'nullable',
+            'notes_en' => 'nullable',
+            'notes_ar' => 'nullable',
         ];
     }
 

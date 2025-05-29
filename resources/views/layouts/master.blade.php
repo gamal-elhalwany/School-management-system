@@ -34,7 +34,7 @@
         <!-- main-content -->
         <div class="content-wrapper">
 
-            @yield('page-header')
+            @yield('page-header') <!-- The breadcrumb -->
 
             @yield('content')
 

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Stages;
 
 use App\Models\Stage;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreStageRequest;
 
@@ -35,12 +34,22 @@ class StageController extends Controller
     public function store(StoreStageRequest $request)
     {
         $user = auth()->user();
-        if ($user)
-        {
+        $uniqueName = Stage::where('name->en', $request->post('name_en'))->orWhere('name->ar', $request->post('name_ar'))->exists();
+        if ($uniqueName) {
+            toastr()->error(trans('validation.unique'));
+            return redirect()->back();
+        }
+
+        if ($user) {
             $stage = Stage::create([
                 'name' => [
                     'en' => $request->post('name_en'),
                     'ar' => $request->post('name_ar'),
+                ],
+
+                'notes' => [
+                    'en' => $request->post('notes_en'),
+                    'ar' => $request->post('notes_ar'),
                 ],
             ]);
             toastr()->success(trans('messages.success'));
@@ -71,9 +80,17 @@ class StageController extends Controller
     public function update(StoreStageRequest $request, Stage $stage)
     {
         $user = auth()->user();
-        if ($user)
-        {
-            $stage->update($request->all());
+        if ($user) {
+            $stage->update([
+                'name' => [
+                    'en' => $request->post('name_en'),
+                    'ar' => $request->post('name_ar'),
+                ],
+                'notes' => [
+                    'en' => $request->post('notes_en'),
+                    'ar' => $request->post('notes_ar'),
+                ],
+            ]);
             toastr()->success(trans('messages.success'));
             return redirect()->route('stages.index');
         }
@@ -83,10 +100,16 @@ class StageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, Stage $stage)
+    public function destroy(Stage $stage)
     {
-        $user= auth()->user();
+        $user = auth()->user();
         if ($user) {
+            $stageClassrooms = $stage->classrooms()->count();
+
+            if ($stageClassrooms !== 0) {
+                toastr()->error(__('messages.stage_delete'));
+                return redirect()->back();
+            }
             $stage->delete();
             toastr()->info(trans('messages.delete'));
             return redirect()->route('stages.index');

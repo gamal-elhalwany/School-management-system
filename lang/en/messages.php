@@ -10,4 +10,5 @@ return [
     'password_error' => 'the password is incorrect.',
     'password_required' => 'the password is required.',
     'password_match' => 'the password doesn\'t match.',
+    'stage_delete' => 'This Stage Can\'t be deleted beacuse it has classrooms. you have to delete its classrooms first!',
 ];
