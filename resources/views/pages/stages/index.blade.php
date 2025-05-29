@@ -50,6 +50,7 @@
                 <!-- Button triger store modal -->
                 <button type="button mb-3" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#storeModal"
                     data-bs-whatever="@fat">{{ __('Add Stage') }}</button>
+
                 <div class="table-responsive mt-3">
                     <table id="datatable" class="table table-striped table-bordered p-0">
                         <thead>
@@ -143,7 +144,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="exampleModalLabel">
-                                                            {{ __('Deleting Stage' . ' ' . $stage->id) }}</h5>
+                                                            {{ __('Deleting Stage') . ' .. ' . $stage->name }}</h5>
                                                     </div>
                                                     <div class="modal-body">
                                                         {{ __('Are you sure of deleting this?!') }}

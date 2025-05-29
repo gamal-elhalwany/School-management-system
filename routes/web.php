@@ -35,6 +35,7 @@ Route::middleware(['auth', 'localeSessionRedirect', 'localizationRedirect', 'loc
 
     // Classrooms Routes.
     Route::resource('classrooms', ClassroomController::class);
+    Route::post('classrooms/delete_classrooms/all', [ClassroomController::class, 'delete_all_classrooms'])->name('delete_all.classrooms');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

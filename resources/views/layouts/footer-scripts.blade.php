@@ -35,3 +35,39 @@
 <script src="{{ URL::asset('assets/js/lobilist.js') }}"></script>
 <!-- custom -->
 <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
+
+<script>
+    // Make a Check All Button.
+    function checkAll(className, ele) {
+        let elements = document.getElementsByClassName(className);
+        let l = elements.length;
+
+        if (ele.checked) {
+            for (let i=0; i < l; i++) {
+                elements[i].checked = true;
+            }
+        } else {
+            for (let i=0; i < l; i++) {
+                elements[i].checked = false;
+            }
+        }
+    }
+
+    // Delete All Satges at Once.
+    $(function () {
+        $('#delete_all_classrooms').click(function () {
+            let selected = new Array();
+
+            $('#datatable input[type=checkbox].box:checked').each(function () {
+                if (this.value) {
+                    selected.push(this.value);
+                }
+            });
+
+            if (selected.length > 0) {
+                $('#delete_all_modal').modal('show');
+                $('input[id="delete_all_id"]').val(selected);
+            }
+        });
+    });
+</script>

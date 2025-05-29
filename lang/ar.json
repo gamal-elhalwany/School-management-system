@@ -214,6 +214,8 @@
     "Exam Comments": "تعليقات المستخدمين",
     "Exam Ratings": "درجات المستخدمين",
     "Exam Reviews": "مراجعات المستخدمين",
+    "Edit": "تعديل",
+    "Edit Classroom": "تعديل الفصل الدراسي",
     "Library": "مكتبة",
     "Book": "كتاب",
     "Parents": "أولياء الأمور",
@@ -322,7 +324,9 @@
     "Update and Save": "تعديل و حفظ",
     "Are you sure of deleting this?!": "هل أنت متأكد من حذف هذا؟!",
     "Delete": "حذف",
+    "Delete All": "حذف كل المراحل",
     "Deleting Stage": "حذف مرحلة",
+    "Deleting a Classroom": "حذف صف دراسي",
     "Choose Stage": "اختر مرحلة",
     "Close": "إغلاق",
     "List of Classrooms": "قائمة الصفوف الدراسية"

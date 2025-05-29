@@ -6,7 +6,6 @@ use App\Models\Classroom;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Stage;
-use League\OAuth1\Client\Server\Trello;
 
 class ClassroomController extends Controller
 {
@@ -37,17 +36,20 @@ class ClassroomController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name_ar' => 'required"min:3|max:50',
-            'name_en' => 'required"min:3|max:50',
-            ],
-    [
-                'name.required' => __('validation.required'),
+        // dd($request);
+        $request->validate(
+            [
+                'name' => [
+                    'ar' => 'required|min:3|max:50',
+                    'en' => 'required|min:3|max:50',
+                ],
+                [
+                    'name.required' => __('validation.required'),
+                ]
             ]
         );
 
         $user = auth()->user();
-        // dd($request->List_Classes);
         if ($user) {
 
             foreach ($request->List_Classes as $class) {
@@ -87,7 +89,32 @@ class ClassroomController extends Controller
      */
     public function update(Request $request, Classroom $classroom)
     {
-        //
+        $request->validate(
+            [
+                'name_ar' => 'required|min:3|max:50',
+                'name_en' => 'required|min:3|max:50',
+            ],
+            [
+                'name.required' => __('validation.required'),
+            ]
+        );
+
+        $user = auth()->user();
+        if ($user) {
+
+            $classroom->update([
+                'name' => [
+                    'ar' => $request->name_ar,
+                    'en' => $request->name_en,
+                ],
+
+                'stage_id' => $request->stage_id,
+            ]);
+
+            toastr()->success(__('messages.update'));
+            return redirect()->back();
+        }
+        return redirect()->route('login');
     }
 
     /**
@@ -95,6 +122,25 @@ class ClassroomController extends Controller
      */
     public function destroy(Classroom $classroom)
     {
-        //
+        $user = auth()->user();
+        if ($user) {
+            $classroom->delete();
+            toastr()->info('messages.delete');
+            return redirect()->back();
+        }
+        return redirect()->route('login');
+    }
+
+    public function delete_all_classrooms(Request $request)
+    {
+        $user = auth()->user();
+        if ($user) {
+            $all_classrooms = explode(',', $request->delete_all_id);
+
+            Classroom::whereIn('id', $all_classrooms)->delete();
+            toastr()->error('messages.delete');
+            return redirect()->back();
+        }
+        return redirect()->route('login');
     }
 }

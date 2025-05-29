@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Stages;
 
 use App\Models\Stage;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreStageRequest;
 
@@ -105,6 +104,12 @@ class StageController extends Controller
     {
         $user = auth()->user();
         if ($user) {
+            $stageClassrooms = $stage->classrooms()->count();
+
+            if ($stageClassrooms !== 0) {
+                toastr()->error(__('messages.stage_delete'));
+                return redirect()->back();
+            }
             $stage->delete();
             toastr()->info(trans('messages.delete'));
             return redirect()->route('stages.index');

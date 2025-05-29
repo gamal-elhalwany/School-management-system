@@ -12,7 +12,7 @@ class Classroom extends Model
     protected $fillable = ['name', 'stage_id'];
     public $translatable = ['name'];
 
-    public function stages ()
+    public function stage ()
     {
         return $this->belongsTo(Stage::class, 'stage_id', 'id');
     }
