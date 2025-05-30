@@ -16,4 +16,9 @@ class Classroom extends Model
     {
         return $this->belongsTo(Stage::class, 'stage_id', 'id');
     }
+
+    public function sections()
+    {
+        return $this->hasMany(Section::class);
+    }
 }

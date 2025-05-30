@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Stages\StageController;
+use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Classrooms\ClassroomController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -36,6 +37,10 @@ Route::middleware(['auth', 'localeSessionRedirect', 'localizationRedirect', 'loc
     // Classrooms Routes.
     Route::resource('classrooms', ClassroomController::class);
     Route::post('classrooms/delete_classrooms/all', [ClassroomController::class, 'delete_all_classrooms'])->name('delete_all.classrooms');
+
+    // Sections Routes.
+    Route::resource('sections', SectionController::class);
+    Route::get('classes/{class}', [SectionController::class, 'getClasses'])->name('get.classes');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

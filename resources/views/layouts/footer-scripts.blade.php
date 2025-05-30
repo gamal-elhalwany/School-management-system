@@ -70,4 +70,29 @@
             }
         });
     });
+
+    // Get All Classrooms That Relevant to Specified Stage When User Choose it From the Sections From.
+    $(function() {
+        $('select[name="stage_id"]').on('change', function() {
+            $stage_id = $(this).val();
+            if ($stage_id) {
+                $.ajax({
+                    url: "{{ URL::to('classes') }}/" + $stage_id,
+                    type: "GET",
+                    dataType: "json",
+
+                    success: function(data) {
+                        console.log(data);
+                        $('select[name="class_id"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="class_id"]').append('<option value="' +
+                                key + '">' + value + '</option>');
+                        });
+                    }
+                });
+            } else {
+                console.log('Error With AJAX Method');
+            }
+        });
+    });
 </script>
