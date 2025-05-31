@@ -25,8 +25,8 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])->prefix(LaravelLocalization::setLocale())->group(function () {
 
-    Route::get('/empty', function () {
-        return view('empty');
+    Route::get('/dashboard', function () {
+        return view('dashboard');
     });
 
     Route::get('/stages', [StageController::class, 'index'])->name('stages.index');
