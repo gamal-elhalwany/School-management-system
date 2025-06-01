@@ -100,7 +100,7 @@ class SectionController extends Controller
         }
 
         $section->update($request->all());
-        Alert::success(__('Success'), __('messages.success'));
+        Alert::success(__('Success'), __('messages.update'));
         return redirect()->back();
     }
 
@@ -113,7 +113,7 @@ class SectionController extends Controller
 
         if ($user) {
             $section->delete();
-            alert()->error(__('Delete'), 'messages.delete');
+            alert()->error(__('Delete'), __('messages.delete'));
             return redirect()->back();
         }
         return redirect()->route('login');

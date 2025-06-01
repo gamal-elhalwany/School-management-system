@@ -91,7 +91,7 @@ class StageController extends Controller
                     'ar' => $request->post('notes_ar'),
                 ],
             ]);
-            alert()->success(__('Success'), trans('messages.success'));
+            alert()->success(__('Success'), trans('messages.update'));
             return redirect()->route('stages.index');
         }
         return redirect()->route('login');
