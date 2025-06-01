@@ -62,7 +62,7 @@ class ClassroomController extends Controller
                     'stage_id' => $class['stage_id'],
                 ]);
             }
-            toastr()->success(__('messages.success'));
+            alert()->success(__('Success'), __('messages.success'));
             return redirect()->back();
         }
         return redirect()->route('login');
@@ -111,7 +111,7 @@ class ClassroomController extends Controller
                 'stage_id' => $request->stage_id,
             ]);
 
-            toastr()->success(__('messages.update'));
+            alert()->success(__('Success'), __('messages.update'));
             return redirect()->back();
         }
         return redirect()->route('login');
@@ -125,7 +125,7 @@ class ClassroomController extends Controller
         $user = auth()->user();
         if ($user) {
             $classroom->delete();
-            toastr()->info('messages.delete');
+            alert()->success(__('Delete'), __('messages.delete'));
             return redirect()->back();
         }
         return redirect()->route('login');
@@ -138,7 +138,7 @@ class ClassroomController extends Controller
             $all_classrooms = explode(',', $request->delete_all_id);
 
             Classroom::whereIn('id', $all_classrooms)->delete();
-            toastr()->error('messages.delete');
+            alert()->error(__('Delete'),__('messages.delete'));
             return redirect()->back();
         }
         return redirect()->route('login');

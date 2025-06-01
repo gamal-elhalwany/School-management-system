@@ -7,6 +7,7 @@ use App\Models\Classroom;
 use App\Models\Section;
 use App\Models\Stage;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SectionController extends Controller
 {
@@ -56,7 +57,7 @@ class SectionController extends Controller
                     'classroom_id' => $request->class_id,
             ]);
 
-            toastr()->success('messages.success');
+            alert()->success(__('Success'), 'messages.success');
             return redirect()->back();
         }
         return redirect()->route('login');
@@ -99,7 +100,7 @@ class SectionController extends Controller
         }
 
         $section->update($request->all());
-        toastr()->success('messages.success');
+        Alert::success(__('Success'), __('messages.success'));
         return redirect()->back();
     }
 
@@ -112,7 +113,7 @@ class SectionController extends Controller
 
         if ($user) {
             $section->delete();
-            toastr()->error('messages.delete');
+            alert()->error(__('Delete'), 'messages.delete');
             return redirect()->back();
         }
         return redirect()->route('login');

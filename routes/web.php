@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])->prefix(LaravelLocalization::setLocale())->group(function () {
 
-    Route::get('/dashboard', function () {
+    Route::get('/', function () {
         return view('dashboard');
     });
 

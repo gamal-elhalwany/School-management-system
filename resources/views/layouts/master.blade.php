@@ -36,6 +36,8 @@
 
             @yield('page-header') <!-- The breadcrumb -->
 
+            @include('sweetalert::alert')
+
             @yield('content')
 
             <!--=================================

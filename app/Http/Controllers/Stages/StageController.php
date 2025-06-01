@@ -36,7 +36,7 @@ class StageController extends Controller
         $user = auth()->user();
         $uniqueName = Stage::where('name->en', $request->post('name_en'))->orWhere('name->ar', $request->post('name_ar'))->exists();
         if ($uniqueName) {
-            toastr()->error(trans('validation.unique'));
+            alert()->error(__('ُError'), trans('validation.unique'));
             return redirect()->back();
         }
 
@@ -52,7 +52,7 @@ class StageController extends Controller
                     'ar' => $request->post('notes_ar'),
                 ],
             ]);
-            toastr()->success(trans('messages.success'));
+            alert()->success(__('Success'), trans('messages.success'));
             return redirect()->route('stages.index');
         }
         return redirect()->route('login');
@@ -91,7 +91,7 @@ class StageController extends Controller
                     'ar' => $request->post('notes_ar'),
                 ],
             ]);
-            toastr()->success(trans('messages.success'));
+            alert()->success(__('Success'), trans('messages.success'));
             return redirect()->route('stages.index');
         }
         return redirect()->route('login');
@@ -107,11 +107,11 @@ class StageController extends Controller
             $stageClassrooms = $stage->classrooms()->count();
 
             if ($stageClassrooms !== 0) {
-                toastr()->error(__('messages.stage_delete'));
+                alert()->success(__('Success'), __('messages.stage_delete'));
                 return redirect()->back();
             }
             $stage->delete();
-            toastr()->info(trans('messages.delete'));
+            alert()->success(__('Success'), trans('messages.delete'));
             return redirect()->route('stages.index');
         }
         return redirect()->route('login');

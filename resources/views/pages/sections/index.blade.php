@@ -203,7 +203,8 @@
                                                                                                             type="checkbox"
                                                                                                             class="form-check-input"
                                                                                                             name="status"
-                                                                                                            id="exampleCheck1">
+                                                                                                            id="exampleCheck1"
+                                                                                                            value="1">
                                                                                                     @endif
                                                                                                     <label
                                                                                                         class="form-check-label"

@@ -7,8 +7,8 @@
                     <ul class="nav navbar-nav side-menu" id="sidebarnav">
                         <!-- menu item Dashboard-->
                         <li>
-                            <a href="{{route('stages.index')}}">
-                                <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{__('Home')}}</span>
+                            <a href="/">
+                                <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{__('Dashboard')}}</span>
                                 </div>
                                 <div class="clearfix"></div>
                             </a>
@@ -22,6 +22,7 @@
                                 <div class="clearfix"></div>
                             </a>
                             <ul id="elements" class="collapse" data-parent="#sidebarnav">
+                                <li><a href="{{route('stages.index')}}">{{__('All Stages')}}</a></li>
                                 <li><a href="primary-stage.html">{{__('Primary Stage')}}</a></li>
                             </ul>
                         </li>

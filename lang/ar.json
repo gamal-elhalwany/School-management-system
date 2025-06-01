@@ -175,6 +175,7 @@
     "Reset Password": "إعادة تعيين كلمة المرور",
     "Already registered?": "هل قمت فعلا بالتسجيل؟",
     "Educational Stages": "المراحل التعليمية",
+    "All Stages": "قائمة المراحل",
     "Primary Stage": "المرحلة الأبتدائية",
     "Preparatory Stage": "المرحلة الأعدادية",
     "Secondary Stage": "المرحلة الثانوية",
@@ -339,5 +340,8 @@
     "Deleting a Classroom": "حذف صف دراسي",
     "Choose Stage": "اختر مرحلة",
     "Close": "إغلاق",
-    "List of Classrooms": "قائمة الصفوف الدراسية"
+    "List of Classrooms": "قائمة الصفوف الدراسية",
+    "Success": "نجاح",
+    "Failed": "فشل",
+    "ُError": "خطأ"
 }
