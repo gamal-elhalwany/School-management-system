@@ -121,6 +121,7 @@ class SectionController extends Controller
 
     public function getClasses($id)
     {
+        // Just for updating the main branch.
         $user = auth()->user();
         if ($user) {
             $classes = Classroom::where('stage_id', $id)->pluck('name', 'id');
