@@ -14,6 +14,8 @@
 <!-- Flags CSS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet">
 
+<link rel="stylesheet" href="{{ asset('assets/css/wizard.css') }}">
+
 @yield('css')
 <!--- Style css -->
 <link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet">
@@ -24,3 +26,5 @@
 @else
 <link href="{{ URL::asset('assets/css/ltr.css') }}" rel="stylesheet">
 @endif
+
+@livewireStyles
