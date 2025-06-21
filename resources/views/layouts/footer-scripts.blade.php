@@ -36,6 +36,9 @@
 <!-- custom -->
 <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
 
+<!-- Livewire -->
+@livewireScripts
+
 <script>
     // Make a Check All Button.
     function checkAll(className, ele) {

@@ -11,4 +11,9 @@ class BloodType extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function studentParent()
+    {
+        return $this->belongsTo(StudentParent::class);
+    }
 }

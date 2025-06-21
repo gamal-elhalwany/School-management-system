@@ -38,7 +38,7 @@
                                 <li> <a href="{{route('classrooms.index')}}">{{__('List of Classrooms')}}</a> </li>
                             </ul>
                         </li>
-                        <!-- menu item table-->
+                        <!-- menu item table sections -->
                         <li>
                             <a href="javascript:void(0);" data-toggle="collapse" data-target="#calendar-menu">
                                 <div class="pull-left"><i class="ti-calendar"></i><span
@@ -50,6 +50,7 @@
                                 <li> <a href="{{route('sections.index')}}">{{__('Study Sections')}} </a> </li>
                             </ul>
                         </li>
+
                         <!-- menu item todo-->
                         <li>
                             <a href="todo-list.html"><i class="ti-menu-alt"></i><span class="right-nav-text">{{__('Students')}}</span> </a>
@@ -58,10 +59,25 @@
                         <li>
                             <a href="chat-page.html"><i class="ti-comments"></i><span class="right-nav-text">{{__('Teachers')}}</span></a>
                         </li>
-                        <!-- menu item mailbox-->
+                        {{-- <!-- menu item mailbox-->
                         <li>
                             <a href="mail-box.html"><i class="ti-email"></i><span class="right-nav-text">{{__('Parents')}}</span> <span class="badge badge-pill badge-warning float-right mt-1">HOT</span> </a>
+                        </li> --}}
+
+                        <!-- menu item table Parents -->
+                        <li>
+                            <a href="javascript:void(0);" data-toggle="collapse" data-target="#parents-menu">
+                                <div class="pull-left"><i class="ti-parents"></i><span
+                                        class="right-nav-text">{{__('Parents')}}</span></div>
+                                <div class="pull-right"><i class="ti-plus"></i></div>
+                                <div class="clearfix"></div>
+                            </a>
+                            <ul id="parents-menu" class="collapse" data-parent="#sidebarnav">
+                                <li> <a href="{{route('sections.index')}}">{{__('Parents Menu')}} </a> </li>
+                                <li> <a href="{{url('add-parent')}}">{{__('Add Parents')}} </a> </li>
+                            </ul>
                         </li>
+
                         <!-- menu item Charts-->
                         <li>
                             <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart">

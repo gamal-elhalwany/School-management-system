@@ -12,4 +12,9 @@ class Religion extends Model
 
     protected $fillable = ['name'];
     public $translatable = ['name'];
+
+    public function studentParent()
+    {
+        return $this->belongsTo(StudentParent::class);
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use Livewire\Livewire;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Stages\StageController;
@@ -25,6 +26,16 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])->prefix(LaravelLocalization::setLocale())->group(function () {
 
+    // Livewire build-in routes. Added this route to global fix, because the livewire couldn't skip the localization. So when use Localiztion put this Livewire method. 
+    Livewire::setUpdateRoute(function ($handle) {
+        return Route::post('/livewire/update', $handle)
+            ->withoutMiddleware(['localizationRedirect', 'localeViewPath']);
+    });
+
+    Route::get('/livewire_counter', function () {
+        return view('livewire_counter');
+    });
+
     Route::get('/', function () {
         return view('dashboard');
     });
@@ -41,6 +52,9 @@ Route::middleware(['auth', 'localeSessionRedirect', 'localizationRedirect', 'loc
     // Sections Routes.
     Route::resource('sections', SectionController::class);
     Route::get('classes/{class}', [SectionController::class, 'getClasses'])->name('get.classes');
+
+    // Livewire Routes.
+    Route::view('add-parent', 'livewire.parent_form');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
