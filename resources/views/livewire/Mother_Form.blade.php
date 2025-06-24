@@ -1,4 +1,6 @@
-@if ($currentStep != 2)
+@if ($currentStep == 2)
+    <div class="row setup-content" id="step-2">
+@else
     <div style="display: none" class="row setup-content" id="step-2">
 @endif
 <div class="col-xs-12">
@@ -40,14 +42,14 @@
 
             <div class="col">
                 <label for="title">{{ trans('Parent_trans.National_ID_Mother') }}</label>
-                <input type="text" wire:model="National_ID_Mother" class="form-control">
+                <input type="text" wire:model.live="National_ID_Mother" class="form-control">
                 @error('National_ID_Mother')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="col">
                 <label for="title">{{ trans('Parent_trans.Passport_ID_Mother') }}</label>
-                <input type="text" wire:model="Passport_ID_Mother" class="form-control">
+                <input type="text" wire:model.live="Passport_ID_Mother" class="form-control">
                 @error('Passport_ID_Mother')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -55,7 +57,7 @@
 
             <div class="col">
                 <label for="title">{{ trans('Parent_trans.Phone_Mother') }}</label>
-                <input type="text" wire:model="Phone_Mother" class="form-control">
+                <input type="text" wire:model.live="Phone_Mother" class="form-control">
                 @error('Phone_Mother')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -70,7 +72,7 @@
                 <select class="custom-select my-1 mr-sm-2" wire:model="Nationality_Mother_id">
                     <option selected>{{ trans('Parent_trans.Choose') }}...</option>
                     @foreach ($Nationalities as $National)
-                        <option value="{{ $National->id }}">{{ $National->Name }}</option>
+                        <option value="{{ $National->id }}">{{ $National->name }}</option>
                     @endforeach
                 </select>
                 @error('Nationality_Mother_id')
@@ -82,7 +84,7 @@
                 <select class="custom-select my-1 mr-sm-2" wire:model="Blood_Type_Mother_id">
                     <option selected>{{ trans('Parent_trans.Choose') }}...</option>
                     @foreach ($Type_Bloods as $Type_Blood)
-                        <option value="{{ $Type_Blood->id }}">{{ $Type_Blood->Name }}</option>
+                        <option value="{{ $Type_Blood->id }}">{{ $Type_Blood->name }}</option>
                     @endforeach
                 </select>
                 @error('Blood_Type_Mother_id')
@@ -94,7 +96,7 @@
                 <select class="custom-select my-1 mr-sm-2" wire:model="Religion_Mother_id">
                     <option selected>{{ trans('Parent_trans.Choose') }}...</option>
                     @foreach ($Religions as $Religion)
-                        <option value="{{ $Religion->id }}">{{ $Religion->Name }}</option>
+                        <option value="{{ $Religion->id }}">{{ $Religion->name }}</option>
                     @endforeach
                 </select>
                 @error('Religion_Mother_id')
