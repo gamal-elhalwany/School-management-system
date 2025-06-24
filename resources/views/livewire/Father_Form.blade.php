@@ -1,13 +1,15 @@
-@if($currentStep != 1)
-    <div style="display: none" class="row setup-content" id="step-1">
-        @endif
+@if ($currentStep == 1)
+    <div class="row setup-content" id="step-2">
+@else
+    <div style="display: none" class="row setup-content" id="step-2">
+@endif
         <div class="col-xs-12">
             <div class="col-md-12">
                 <br>
                 <div class="form-row">
                     <div class="col">
                         <label for="title">{{trans('Parent_trans.Email')}}</label>
-                        <input type="email" wire:model="Email"  class="form-control">
+                        <input type="email" wire:model.live="Email"  class="form-control">
                         @error('Email')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -56,14 +58,14 @@
 
                     <div class="col">
                         <label for="title">{{trans('Parent_trans.National_ID_Father')}}</label>
-                        <input type="text" wire:model="National_ID_Father" class="form-control">
+                        <input type="text" wire:model.live="National_ID_Father" class="form-control">
                         @error('National_ID_Father')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="col">
                         <label for="title">{{trans('Parent_trans.Passport_ID_Father')}}</label>
-                        <input type="text" wire:model="Passport_ID_Father" class="form-control">
+                        <input type="text" wire:model.live="Passport_ID_Father" class="form-control">
                         @error('Passport_ID_Father')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -71,7 +73,7 @@
 
                     <div class="col">
                         <label for="title">{{trans('Parent_trans.Phone_Father')}}</label>
-                        <input type="text" wire:model="Phone_Father" class="form-control">
+                        <input type="text" wire:model.live="Phone_Father" class="form-control">
                         @error('Phone_Father')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror

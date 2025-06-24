@@ -40,6 +40,7 @@
 @livewireScripts
 
 <script>
+
     // Make a Check All Button.
     function checkAll(className, ele) {
         let elements = document.getElementsByClassName(className);
