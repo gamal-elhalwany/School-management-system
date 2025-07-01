@@ -73,8 +73,8 @@
                                 <div class="clearfix"></div>
                             </a>
                             <ul id="parents-menu" class="collapse" data-parent="#sidebarnav">
-                                <li> <a href="{{route('sections.index')}}">{{__('Parents Menu')}} </a> </li>
-                                <li> <a href="{{url('add-parent')}}">{{__('Add Parents')}} </a> </li>
+                                {{-- <li> <a href="{{route('sections.index')}}">{{__('Parents Menu')}} </a> </li> --}}
+                                <li> <a href="{{url('add-parent')}}">{{__('Parents Menu')}} </a> </li>
                             </ul>
                         </li>
 
